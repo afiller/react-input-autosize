@@ -411,7 +411,7 @@ var AutosizeInput = function (_Component) {
 				'div',
 				{ className: this.props.className, style: wrapperStyle },
 				this.renderStyles(),
-				this.props.inputIsTextArea ? React__default.createElement('textarea', _extends({}, inputProps, { ref: this.inputRef, wrap: 'off' })) : React__default.createElement('input', _extends({}, inputProps, { ref: this.inputRef })),
+				this.props.inputIsTextArea ? React__default.createElement('textarea', _extends({}, inputProps, { ref: this.inputRef, wrap: inputProps.wrap ? inputProps.wrap : "off" })) : React__default.createElement('input', _extends({}, inputProps, { ref: this.inputRef })),
 				React__default.createElement(
 					'div',
 					{ ref: this.sizerRef, style: sizerStyle },
@@ -439,6 +439,7 @@ AutosizeInput.propTypes = {
 	inputRef: PropTypes.func, // ref callback for the input element
 	inputStyle: PropTypes.object, // css styles for the input element
 	inputIsTextArea: PropTypes.bool, // switch to textarea instead of input (don't strip line-breaks)
+	textAreaWrap: PropTypes.bool, // Only for textarea: wrap prop
 	minWidth: PropTypes.oneOfType([// minimum width for input element
 	PropTypes.number, PropTypes.string]),
 	onAutosize: PropTypes.func, // onAutosize handler: function(newWidth) {}

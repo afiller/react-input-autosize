@@ -173,7 +173,7 @@ class AutosizeInput extends Component {
 			<div className={this.props.className} style={wrapperStyle}>
 				{this.renderStyles()}
 				{this.props.inputIsTextArea
-					? <textarea {...inputProps} ref={this.inputRef} wrap="off" />
+					? <textarea {...inputProps} ref={this.inputRef} wrap={inputProps.wrap? inputProps.wrap : "off"} />
 					: <input {...inputProps} ref={this.inputRef} />}
 				<div ref={this.sizerRef} style={sizerStyle}>{sizerValue}</div>
 				{this.props.placeholder
@@ -197,7 +197,8 @@ AutosizeInput.propTypes = {
 	inputClassName: PropTypes.string,          // className for the input element
 	inputRef: PropTypes.func,                  // ref callback for the input element
 	inputStyle: PropTypes.object,              // css styles for the input element
-	inputIsTextArea: PropTypes.bool,           // switch to textarea instead of input (don't strip line-breaks)
+  inputIsTextArea: PropTypes.bool,           // switch to textarea instead of input (don't strip line-breaks)
+  textAreaWrap: PropTypes.bool,              // Only for textarea: wrap prop
 	minWidth: PropTypes.oneOfType([            // minimum width for input element
 		PropTypes.number,
 		PropTypes.string,
